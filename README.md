@@ -42,3 +42,9 @@ for(var x=1; x<= 7; x++){
 ```
 
 [so yah I am totally in love with this song right now:](https://www.youtube.com/watch?v=J4AVo_6OuNI)
+
+People|Age|height
+---|---|---|
+Paul|28|5'9"
+Dana|28|5'2"
+Christian|25|5'10"
