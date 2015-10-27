@@ -5,7 +5,7 @@ I was born and raised in Chicago, Il
 These are some of the things I learned today:
 
 
-'''
+```
 var makeBoard=function (x,y,rows){
   var fisrtRow=x+y+x+y+x+y+x+y;
   var secondRow=y+x+y+x+y+x+y+x;
@@ -39,4 +39,4 @@ for(var x=1; x<= 7; x++){
   console.log(string);
 }
 
-'''
+```
