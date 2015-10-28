@@ -72,3 +72,5 @@ Christian|25|5'10"
 
 #Picture of Barca Home Stadium
 ![Picture of Camp Nou](http://blog.orangemonkeytours.com/wp-content/uploads/2012/03/turisme_de_barcelona2.png)
+
+#changed to ssh clone
