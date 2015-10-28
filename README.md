@@ -60,3 +60,11 @@ Christian|25|5'10"
 - Ibrahimavic
 - Iniesta
 - Swaurez
+
+#In the words of Abraham Lincoln:
+
+> You cannot believe everything you hear on the internet.
+
+*I need to figure out how to get to Gen Assembly on time!*
+
+**Italics practice**
