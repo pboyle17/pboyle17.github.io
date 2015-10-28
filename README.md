@@ -48,3 +48,15 @@ People|Age|height
 Paul|28|5'9"
 Dana|28|5'2"
 Christian|25|5'10"
+
+
+#Favorite Foods
+1. Pizza
+2. Pasta
+3. Steak
+
+#Favorite Soccer Players
+- Messi
+- Ibrahimavic
+- Iniesta
+- Swaurez
