@@ -68,3 +68,6 @@ Christian|25|5'10"
 *I need to figure out how to get to Gen Assembly on time!*
 
 **Italics practice**
+
+#Picture of Barca Home Stadium
+![Picture of Camp Nou](http://blog.orangemonkeytours.com/wp-content/uploads/2012/03/turisme_de_barcelona2.png)
