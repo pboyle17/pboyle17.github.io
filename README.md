@@ -42,7 +42,6 @@ for(var x=1; x<= 7; x++){
 ```
 
 #So I'm total In Love with this song right now
-
 [1000 words:Kyle Landry](https://www.youtube.com/watch?v=J4AVo_6OuNI)
 
 People|Age|height
