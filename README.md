@@ -5,7 +5,7 @@ I was born and raised in Chicago, Il
 These are some of the things I learned today:
 
 
-```
+```javascript
 var makeBoard=function (x,y,rows){
   var fisrtRow=x+y+x+y+x+y+x+y;
   var secondRow=y+x+y+x+y+x+y+x;
