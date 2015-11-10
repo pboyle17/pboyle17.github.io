@@ -10,11 +10,14 @@ $(document).ready(function(){
   // console.log(player2);
 
   player1.playMove(gameBoard.columns[3]);
+  console.log(gameBoard.moves);
   player2.playMove(gameBoard.columns[3]);
   player1.playMove(gameBoard.columns[3]);
   player2.playMove(gameBoard.columns[3]);
   player1.playMove(gameBoard.columns[3]);
   player2.playMove(gameBoard.columns[3]);
+  console.log(gameBoard.moves);
+
 
 
 
@@ -26,9 +29,20 @@ var gameBoard = {
 
   printBoard:function(columns){
     console.log(this.columns);
+  } , //end of printBoard method
 
-  }
-}
+  checkForWinner:function(){
+    console.log('checking for winner... ... ...');
+
+    for(var piece in columns[0]){
+      console.log(columns[0][piece]);
+    }
+
+  },//end of checkForWinner method
+
+  'moves':0
+
+}//end gameBoard Object
 
 
 
@@ -39,6 +53,10 @@ function Player(color,board){
  this.playMove=function(column){
    if(column.length<6){
      column.push(color);
+     board.moves++;
+     if(board.moves>6){
+       board.checkForWinner();
+     }
    } else {
      console.log('please choose another move; there is no move room in that column! :D');
    }
