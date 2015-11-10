@@ -1,42 +1,21 @@
 $(document).ready(function(){
 
-  // gameBoard.printBoard(gameBoard.columns);
-  // player1.updateBoard(gameBoard);
-  // console.log('player1 board:',player1.board);
-  // console.log(gameBoard.columns[3]);
-  // player1.playMove(gameBoard.columns[3]);
-  // console.log(player1.color);
-  // console.log(player1);
-  // console.log(player2);
+  player1.makeAMove(prompt('What column do you want to place a piece in?'));
+  player2.makeAMove(prompt('What column do you want to place a piece in?'));
+  player1.makeAMove(prompt('What column do you want to place a piece in?'));
+  player2.makeAMove(prompt('What column do you want to place a piece in?'));
+  player1.makeAMove(prompt('What column do you want to place a piece in?'));
+  player2.makeAMove(prompt('What column do you want to place a piece in?'));
 
-  player1.makeAMove(gameBoard.columns.fourth);
-  player2.makeAMove(gameBoard.columns.fourth);
-  player1.makeAMove(gameBoard.columns.fourth);
-  player2.makeAMove(gameBoard.columns.fourth);
-  player1.makeAMove(gameBoard.columns.fourth);
-  player2.makeAMove(gameBoard.columns.fourth);
-
-
-
-
-
-
+  gameBoard.printBoard();
 
 });
 
 var gameBoard = {
 
-  columns:{
-    'first':[],
-    'second':[],
-    'third':[],
-    'fourth':[],
-    'fifth':[],
-    'six':[],
-    'seventh':[]
-  },
+  columns:[ [],[],[],[],[],[],[] ] ,
 
-  printBoard:function(columns){
+  printBoard:function(){
     console.log(this.columns);
   } , //end of printBoard method
 
@@ -53,41 +32,46 @@ var gameBoard = {
 
 }//end gameBoard Object
 
-
-
-
 function Player(color,board){
   this.color=color;
-
+  this.lastMoveRow=1;
+  this.columnLabel=null;
  this.makeAMove=function(column){
-   if(column.length<6){
-     column.push(color);
-     this.lastMoveRow=column.length;
+   //max sure the board does not go past 6 rows high; let the player know if they cannot play a piece in that column
+
+   //semantics with naming of columns
+   this.lastMoveColumn=column;
+   if(gameBoard.columns[column].length<6){
+
+     gameBoard.columns[column].push(color);
+     this.lastMoveRow=gameBoard.columns[column].length; //need to add one nameing conventions with rows
+     this.columnLabel=parseInt(column);
+     console.log(this);
      this.renderPiece();
-     console.log('lastMoveRow:',this.lastMoveRow)
      board.moves++;
+     //once 7 moves have been played there is a possibility for a winner;check for it
      if(board.moves>6){
        board.checkForWinner();
      }
    } else {
+     //cannot play anymore pieces to this column; invalid move
      console.log('please choose another move; there is no move room in that column! :D');
    }
-   console.log('after player1 move the board state is:',board);
+  //  console.log('after player1 move the board state is:',board);
  };//end of playMove
 
- this.updateBoard=function(board){
-    this.board=board;
-  } ,
-
   this.renderPiece=function(){
-    $('#row'+this.lastMoveRow+' > div.space.col-4').css('background-color',this.color);
-  }
+    var col=this.columnLabel;
+    var row=this.lastMoveRow.toString();
+
+    console.log(color);
+    console.log('row',row,'col',col);
+    $('#row'+row+'> div.space.col-'+col).css('background-color',color);
+  };//end of renderPiece function
+
 };// end of Player constructor function
 
 
 
 var player1 = new Player ('black',gameBoard);
-
 var player2 = new Player ('red',gameBoard);
-
-console.log(player1.color,player2.color);
