@@ -10,13 +10,12 @@ $(document).ready(function(){
   // console.log(player2);
 
   player1.makeAMove(gameBoard.columns.fourth);
-  console.log(gameBoard.moves);
   player2.makeAMove(gameBoard.columns.fourth);
   player1.makeAMove(gameBoard.columns.fourth);
   player2.makeAMove(gameBoard.columns.fourth);
   player1.makeAMove(gameBoard.columns.fourth);
   player2.makeAMove(gameBoard.columns.fourth);
-  console.log('moves:',gameBoard.moves);
+
 
 
 
@@ -63,8 +62,8 @@ function Player(color,board){
  this.makeAMove=function(column){
    if(column.length<6){
      column.push(color);
-     console.log('this represents:',this);
-     this.lastMoveRow=column.length-1;
+     this.lastMoveRow=column.length;
+     this.renderPiece();
      console.log('lastMoveRow:',this.lastMoveRow)
      board.moves++;
      if(board.moves>6){
@@ -78,8 +77,12 @@ function Player(color,board){
 
  this.updateBoard=function(board){
     this.board=board;
+  } ,
+
+  this.renderPiece=function(){
+    $('#row'+this.lastMoveRow+' > div.space.col-4').css('background-color',this.color);
   }
-};
+};// end of Player constructor function
 
 
 
