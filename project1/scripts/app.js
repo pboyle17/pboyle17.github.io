@@ -9,14 +9,15 @@ $(document).ready(function(){
   // console.log(player1);
   // console.log(player2);
 
-  player1.playMove(gameBoard.columns[3]);
+  player1.makeAMove(gameBoard.columns.fourth);
   console.log(gameBoard.moves);
-  player2.playMove(gameBoard.columns[3]);
-  player1.playMove(gameBoard.columns[3]);
-  player2.playMove(gameBoard.columns[3]);
-  player1.playMove(gameBoard.columns[3]);
-  player2.playMove(gameBoard.columns[3]);
-  console.log(gameBoard.moves);
+  player2.makeAMove(gameBoard.columns.fourth);
+  player1.makeAMove(gameBoard.columns.fourth);
+  player2.makeAMove(gameBoard.columns.fourth);
+  player1.makeAMove(gameBoard.columns.fourth);
+  player2.makeAMove(gameBoard.columns.fourth);
+  console.log('moves:',gameBoard.moves);
+
 
 
 
@@ -25,7 +26,16 @@ $(document).ready(function(){
 });
 
 var gameBoard = {
-  columns:[[],[],[],[],[],[],[]],
+
+  columns:{
+    'first':[],
+    'second':[],
+    'third':[],
+    'fourth':[],
+    'fifth':[],
+    'six':[],
+    'seventh':[]
+  },
 
   printBoard:function(columns){
     console.log(this.columns);
@@ -34,8 +44,8 @@ var gameBoard = {
   checkForWinner:function(){
     console.log('checking for winner... ... ...');
 
-    for(var piece in columns[0]){
-      console.log(columns[0][piece]);
+    for(var piece in columns){
+      console.log(columns[piece]);
     }
 
   },//end of checkForWinner method
@@ -50,11 +60,12 @@ var gameBoard = {
 function Player(color,board){
   this.color=color;
 
- this.playMove=function(column){
+ this.makeAMove=function(column){
    if(column.length<6){
      column.push(color);
-     this.row=column.length;
-     console.log(row)
+     console.log('this represents:',this);
+     this.lastMoveRow=column.length-1;
+     console.log('lastMoveRow:',this.lastMoveRow)
      board.moves++;
      if(board.moves>6){
        board.checkForWinner();
@@ -63,7 +74,7 @@ function Player(color,board){
      console.log('please choose another move; there is no move room in that column! :D');
    }
    console.log('after player1 move the board state is:',board);
-  };
+ };//end of playMove
 
  this.updateBoard=function(board){
     this.board=board;
