@@ -53,6 +53,8 @@ function Player(color,board){
  this.playMove=function(column){
    if(column.length<6){
      column.push(color);
+     this.row=column.length;
+     console.log(row)
      board.moves++;
      if(board.moves>6){
        board.checkForWinner();
