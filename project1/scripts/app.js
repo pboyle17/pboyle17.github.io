@@ -1,72 +1,81 @@
 $(document).ready(function(){
-
-
-
   gameBoard.playConnectFour();
-
-
 });//end of document.ready()
-
 var gameBoard = {
-
-  'lastMove':null,
-
   columns:[ [],[],[],[],[],[],[] ] ,
+  directions:{
+    right:[1,0],
+    left:[-1,0],
+    down:[0,-1],
+    diagUpRight:[1,1],
+    diagUpLeft:[-1,1],
+    diagDownRight:[1,-1],
+    diagDownLeft:[-1,-1]
+  },
+//coordinates of last move
+  setLastMove:function(arr){
+    gameBoard.lastMove=arr;
+    console.log('last move set');
+  },
 
-  printBoard:function(){
-    console.log(this.columns);
-  } , //end of printBoard method
+//difference arr to transform lastMove coordinates to testSpace coordinates
+  setTestSpace:function(diff){
+    gameBoard.testSpace=[gameBoard.lastMove[0]+diff[0],gameBoard.lastMove[1]+diff[1]]
+    console.log('test move set:',gameBoard.testSpace)
+  },
 
-  checkForWinner:function(){
-    var moves=this.moves;
-    var lastMove=this.lastMove;
-    console.log(moves);
-    console.log(lastMove);
+//find a color of some coordinates
+  findColor:function(arr){
+    var color=$('#row'+arr[1]+' > div.space.col-'+arr[0]).css('backgroundColor');
+    return color;
+  },
 
-    this.checkDown(lastMove);
-    this.checkRight(lastMove);
-    this.checkLeft(lastMove);
+//compare color of two different spaces
+  compareColor:function(space1,space2){
 
-
-
-
-    if(moves>41){
-      console.log('its a tie!');
+    if(gameBoard.findColor(space1)==gameBoard.findColor(space2)){
+      console.log('the colors!!! they match!!!!');
+      console.log('============================');
+      return true;
+    } else {
+      return false;
     }
-  },//end of checkForWinner method
 
-  checkDown:function(lastMove){
-    var testSquare=[lastMove[0],lastMove[1]-1];
-    console.log(lastMove,testSquare);
-    var colorLastMove=$('#row'+lastMove[1]+' > div.space.col-'+lastMove[0]).css('backgroundColor');
-    var colorTestSquare=$('#row'+testSquare[1]+' > div.space.col-'+testSquare[0]).css('backgroundColor');
-    console.log(colorLastMove,colorTestSquare);
-    console.log(colorLastMove==colorTestSquare);
   },
 
-  checkRight:function(lastMove){
-    var testSquare=[lastMove[0]+1,lastMove[1]];
-    console.log(lastMove,testSquare);
-    var colorLastMove=$('#row'+lastMove[1]+' > div.space.col-'+lastMove[0]).css('backgroundColor');
-    var colorTestSquare=$('#row'+testSquare[1]+' > div.space.col-'+testSquare[0]).css('backgroundColor');
-    console.log(colorLastMove,colorTestSquare);
-    console.log(colorLastMove==colorTestSquare);
+  setInARowCount:function(){
+    gameBoard.inARowCount++;
+    console.log('nice you have:',gameBoard.inARowCount,'in a row!!!')
   },
 
-  checkLeft:function(lastMove){
-    var testSquare=[lastMove[0]-1,lastMove[1]];
-    console.log(lastMove,testSquare);
-    var colorLastMove=$('#row'+lastMove[1]+' > div.space.col-'+lastMove[0]).css('backgroundColor');
-    var colorTestSquare=$('#row'+testSquare[1]+' > div.space.col-'+testSquare[0]).css('backgroundColor');
-    console.log(colorLastMove,colorTestSquare);
-    console.log(colorLastMove==colorTestSquare);
+
+//check to see if winning game state for either player;
+  checkForWinner:function(){
+    console.log('checking to see if there is a winner');
+    console.log('=====================================')
+
+    console.log('checking to the right first');
+    gameBoard.checkMatch(gameBoard.directions.right);
+
+    },//end of checkForWinner method
+
+//test space diff is an arr length of two in which i can transform to last move to the testmove space RETURNS BOOLEAN
+  checkMatch:function(direction){
+    gameBoard.setTestSpace(direction);
+    gameBoard.findColor(gameBoard.lastMove);
+    gameBoard.findColor(gameBoard.testSpace);
+    if(gameBoard.compareColor(gameBoard.lastMove,gameBoard.testSpace)){
+      gameBoard.setInARowCount();
+      return true;
+    } else {
+      return false;
+    }
   },
-
-  'moves':0,
-
 
   playConnectFour:function(){
     var turn=true;
+    gameBoard.moves=0;
+    gameBoard.inARowCount=0;
 
       $('.col-0').click(function(){
         if(turn){
@@ -148,8 +157,9 @@ function Player(color,board){
      gameBoard.columns[column].push(color);
      this.lastMoveRow=gameBoard.columns[column].length-1;
      this.columnLabel=parseInt(column);
+     gameBoard.setLastMove([gameBoard.columns[column].length-1,parseInt(column)]);
      this.renderPiece();
-     board.moves++;
+     gameBoard.moves++;
      //once 7 moves have been played there is a possibility for a winner;check for it
    } else {
      //cannot play anymore pieces to this column; invalid move
@@ -159,6 +169,16 @@ function Player(color,board){
  };//end of playMove
 
   this.renderPiece=function(){
+    //reintialize all matching varialbes to null
+    gameBoard.matchDown=0;
+    gameBoard.matchLeft=0;
+    gameBoard.matchRight=0;
+    gameBoard.matchDiagUpLeft=0;
+    gameBoard.matchDiagUpRigh=0;
+    gameBoard.matchDiagDownLeft=0;
+    gameBoard.matchDiagDownRight=0;
+
+
     var col=this.columnLabel;
     var row=this.lastMoveRow.toString();
     gameBoard.lastMove=[col,parseInt(row)];
