@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
   gameBoard.playConnectFour();
 });//end of document.ready()
 var gameBoard = {
@@ -67,36 +68,200 @@ var gameBoard = {
 
 
 //check to see if winning game state for either player;
-  checkForWinner:function(){
+  checkForWinner:function(direction){
     console.log('checking to see if there is a winner');
     console.log('=====================================')
 
-    gameBoard.resetSpacesInARow();
-    gameBoard.spacesInARow.first=gameBoard.lastMove;
-    console.log(gameBoard.spacesInARow.first);
-    if(gameBoard.checkMatch(gameBoard.directions.right)){
-      gameBoard.spacesInARow.second=gameBoard.testSpace;
-      gameBoard.lastMove=gameBoard.testSpace;
-      console.log(gameBoard.lastMove);
-      if(gameBoard.checkMatch(gameBoard.directions.right)){
-        gameBoard.spacesInARow.third=gameBoard.testSpace;
-        gameBoard.lastMove=gameBoard.testSpace;
-        if(gameBoard.checkMatch(gameBoard.directions.right)){
-          gameBoard.spacesInARow.fourth=gameBoard.testSpace;
-          console.log('winner winner winner!!!!');
-          for(var spaces in gameBoard.spacesInARow){
-            var row = gameBoard.spacesInARow[spaces][1];
-            var col = gameBoard.spacesInARow[spaces][0];
-            $('#row'+row+'> div.space.col-'+col).css('background-color','gold');
 
+      gameBoard.resetSpacesInARow();
+      gameBoard.spacesInARow.first=gameBoard.lastMove;
+      console.log(gameBoard.spacesInARow.first);
+      if(gameBoard.checkMatch(gameBoard.directions.right)){
+        gameBoard.spacesInARow.second=gameBoard.testSpace;
+        gameBoard.lastMove=gameBoard.testSpace;
+        console.log(gameBoard.lastMove);
+        if(gameBoard.checkMatch(gameBoard.directions.right)){
+          gameBoard.spacesInARow.third=gameBoard.testSpace;
+          gameBoard.lastMove=gameBoard.testSpace;
+          if(gameBoard.checkMatch(gameBoard.directions.right)){
+            gameBoard.spacesInARow.fourth=gameBoard.testSpace;
+            console.log('winner winner winner!!!!');
+            for(var spaces in gameBoard.spacesInARow){
+              var row = gameBoard.spacesInARow[spaces][1];
+              var col = gameBoard.spacesInARow[spaces][0];
+              $('#row'+row+'> div.space.col-'+col).css('background-color','gold');
+
+            }
           }
+        } else {
+          console.log('no winners yet')
         }
       } else {
-        console.log('no winners yet')
+        console.log('nope no winners yet');
       }
-    } else {
-      console.log('nope no winners yet');
-    }
+
+      gameBoard.resetSpacesInARow();
+      gameBoard.spacesInARow.first=gameBoard.lastMove;
+      console.log(gameBoard.spacesInARow.first);
+      if(gameBoard.checkMatch(gameBoard.directions.left)){
+        gameBoard.spacesInARow.second=gameBoard.testSpace;
+        gameBoard.lastMove=gameBoard.testSpace;
+        console.log(gameBoard.lastMove);
+        if(gameBoard.checkMatch(gameBoard.directions.left)){
+          gameBoard.spacesInARow.third=gameBoard.testSpace;
+          gameBoard.lastMove=gameBoard.testSpace;
+          if(gameBoard.checkMatch(gameBoard.directions.left)){
+            gameBoard.spacesInARow.fourth=gameBoard.testSpace;
+            console.log('winner winner winner!!!!');
+            for(var spaces in gameBoard.spacesInARow){
+              var row = gameBoard.spacesInARow[spaces][1];
+              var col = gameBoard.spacesInARow[spaces][0];
+              $('#row'+row+'> div.space.col-'+col).css('background-color','gold');
+
+            }
+          }
+        } else {
+          console.log('no winners yet')
+        }
+      } else {
+        console.log('nope no winners yet');
+      }
+
+      gameBoard.resetSpacesInARow();
+      gameBoard.spacesInARow.first=gameBoard.lastMove;
+      console.log(gameBoard.spacesInARow.first);
+      if(gameBoard.checkMatch(gameBoard.directions.diagUpLeft)){
+        gameBoard.spacesInARow.second=gameBoard.testSpace;
+        gameBoard.lastMove=gameBoard.testSpace;
+        console.log(gameBoard.lastMove);
+        if(gameBoard.checkMatch(gameBoard.directions.diagUpLeft)){
+          gameBoard.spacesInARow.third=gameBoard.testSpace;
+          gameBoard.lastMove=gameBoard.testSpace;
+          if(gameBoard.checkMatch(gameBoard.directions.diagUpLeft)){
+            gameBoard.spacesInARow.fourth=gameBoard.testSpace;
+            console.log('winner winner winner!!!!');
+            for(var spaces in gameBoard.spacesInARow){
+              var row = gameBoard.spacesInARow[spaces][1];
+              var col = gameBoard.spacesInARow[spaces][0];
+              $('#row'+row+'> div.space.col-'+col).css('background-color','gold');
+
+            }
+          }
+        } else {
+          console.log('no winners yet')
+        }
+      } else {
+        console.log('nope no winners yet');
+      }
+
+      gameBoard.resetSpacesInARow();
+      gameBoard.spacesInARow.first=gameBoard.lastMove;
+      console.log(gameBoard.spacesInARow.first);
+      if(gameBoard.checkMatch(gameBoard.directions.diagUpRight)){
+        gameBoard.spacesInARow.second=gameBoard.testSpace;
+        gameBoard.lastMove=gameBoard.testSpace;
+        console.log(gameBoard.lastMove);
+        if(gameBoard.checkMatch(gameBoard.directions.diagUpRight)){
+          gameBoard.spacesInARow.third=gameBoard.testSpace;
+          gameBoard.lastMove=gameBoard.testSpace;
+          if(gameBoard.checkMatch(gameBoard.directions.diagUpRight)){
+            gameBoard.spacesInARow.fourth=gameBoard.testSpace;
+            console.log('winner winner winner!!!!');
+            for(var spaces in gameBoard.spacesInARow){
+              var row = gameBoard.spacesInARow[spaces][1];
+              var col = gameBoard.spacesInARow[spaces][0];
+              $('#row'+row+'> div.space.col-'+col).css('background-color','gold');
+
+            }
+          }
+        } else {
+          console.log('no winners yet')
+        }
+      } else {
+        console.log('nope no winners yet');
+      }
+      gameBoard.resetSpacesInARow();
+      gameBoard.spacesInARow.first=gameBoard.lastMove;
+      console.log(gameBoard.spacesInARow.first);
+      if(gameBoard.checkMatch(gameBoard.directions.diagDownRight)){
+        gameBoard.spacesInARow.second=gameBoard.testSpace;
+        gameBoard.lastMove=gameBoard.testSpace;
+        console.log(gameBoard.lastMove);
+        if(gameBoard.checkMatch(gameBoard.directions.diagDownRight)){
+          gameBoard.spacesInARow.third=gameBoard.testSpace;
+          gameBoard.lastMove=gameBoard.testSpace;
+          if(gameBoard.checkMatch(gameBoard.directions.diagDownRight)){
+            gameBoard.spacesInARow.fourth=gameBoard.testSpace;
+            console.log('winner winner winner!!!!');
+            for(var spaces in gameBoard.spacesInARow){
+              var row = gameBoard.spacesInARow[spaces][1];
+              var col = gameBoard.spacesInARow[spaces][0];
+              $('#row'+row+'> div.space.col-'+col).css('background-color','gold');
+
+            }
+          }
+        } else {
+          console.log('no winners yet')
+        }
+      } else {
+        console.log('nope no winners yet');
+      }
+
+      gameBoard.resetSpacesInARow();
+      gameBoard.spacesInARow.first=gameBoard.lastMove;
+      console.log(gameBoard.spacesInARow.first);
+      if(gameBoard.checkMatch(gameBoard.directions.diagDownLeft)){
+        gameBoard.spacesInARow.second=gameBoard.testSpace;
+        gameBoard.lastMove=gameBoard.testSpace;
+        console.log(gameBoard.lastMove);
+        if(gameBoard.checkMatch(gameBoard.directions.diagDownLeft)){
+          gameBoard.spacesInARow.third=gameBoard.testSpace;
+          gameBoard.lastMove=gameBoard.testSpace;
+          if(gameBoard.checkMatch(gameBoard.directions.diagDownLeft)){
+            gameBoard.spacesInARow.fourth=gameBoard.testSpace;
+            console.log('winner winner winner!!!!');
+            for(var spaces in gameBoard.spacesInARow){
+              var row = gameBoard.spacesInARow[spaces][1];
+              var col = gameBoard.spacesInARow[spaces][0];
+              $('#row'+row+'> div.space.col-'+col).css('background-color','gold');
+
+            }
+          }
+        } else {
+          console.log('no winners yet')
+        }
+      } else {
+        console.log('nope no winners yet');
+      }
+
+      gameBoard.resetSpacesInARow();
+      gameBoard.spacesInARow.first=gameBoard.lastMove;
+      console.log(gameBoard.spacesInARow.first);
+      if(gameBoard.checkMatch(gameBoard.directions.down)){
+        gameBoard.spacesInARow.second=gameBoard.testSpace;
+        gameBoard.lastMove=gameBoard.testSpace;
+        console.log(gameBoard.lastMove);
+        if(gameBoard.checkMatch(gameBoard.directions.down)){
+          gameBoard.spacesInARow.third=gameBoard.testSpace;
+          gameBoard.lastMove=gameBoard.testSpace;
+          if(gameBoard.checkMatch(gameBoard.directions.down)){
+            gameBoard.spacesInARow.fourth=gameBoard.testSpace;
+            console.log('winner winner winner!!!!');
+            for(var spaces in gameBoard.spacesInARow){
+              var row = gameBoard.spacesInARow[spaces][1];
+              var col = gameBoard.spacesInARow[spaces][0];
+              $('#row'+row+'> div.space.col-'+col).css('background-color','gold');
+
+            }
+          }
+        } else {
+          console.log('no winners yet')
+        }
+      } else {
+        console.log('nope no winners yet');
+      }
+
+
 
 
 
