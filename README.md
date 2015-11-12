@@ -1,76 +1,16 @@
-Hello my name is Paul Boyle.
 
-I was born and raised in Chicago, Il
+#Connect Four
 
-These are some of the things I learned today:
+For my first project I implemented the game Connect Four using javascript, html, css and jQuery.
 
+I created a board in html and used classes to identify columns and all spaces and specific ids to identify rows. By using .col > #row selector I was able to get access to the DOM at certain coordinates on my board.
 
-```javascript
-var makeBoard=function (x,y,rows){
-  var fisrtRow=x+y+x+y+x+y+x+y;
-  var secondRow=y+x+y+x+y+x+y+x;
+I changed the colors of the spaces with these selectors to represent moves made by each player.
 
-  for(var x=0;x<=rows;x++){
-      if (x%2==0){
-        console.log(fisrtRow);
-      }
-      if (x%2==1){
-        console.log(secondRow);
-      }
-  }
-    return;
-};
-makeBoard(' ','#',8);
+I created methods to access the color of a particular coordinate on the board and compare it to the color of a different coordinate on the board.
 
+The most challenging part of the project came when I needed to test for four in a row. I decided to check for win states by taking the last move and checking in every direction(except for up!!), if there was a match I would move my starting point to the matching point and repeat the process of checking in every direction for four in a row.
 
-var makeTriangle = function (rows,string) {
-    for(var x=1; x<= rows;x++){
-      console.log(string.repeat(x));
-    }
-};
+Given more time I would like to consolidate my code a little better. I was able to break down mosts of the steps of the problem into specific methods but there is still some repetition.
 
-
-for(var x=1; x<= 7; x++){
-  var string='';
-  for(y=1 ; y<=x ; y++){
-     string+='#';
-
-  }
-  console.log(string);
-}
-
-```
-
-#So I'm total In Love with this song right now
-[1000 words:Kyle Landry](https://www.youtube.com/watch?v=J4AVo_6OuNI)
-
-People|Age|height
----|---|---|
-Paul|28|5'9"
-Dana|28|5'2"
-Christian|25|5'10"
-
-
-#Favorite Foods
-1. Pizza
-2. Pasta
-3. Steak
-
-#Favorite Soccer Players
-- Messi
-- Ibrahimavic
-- Iniesta
-- Swaurez
-
-#In the words of Abraham Lincoln:
-
-> You cannot believe everything you hear on the internet.
-
-*I need to figure out how to get to Gen Assembly on time!*
-
-**Italics practice**
-
-#Picture of Barca Home Stadium
-![Picture of Camp Nou](http://blog.orangemonkeytours.com/wp-content/uploads/2012/03/turisme_de_barcelona2.png)
-
-#changed to ssh clone
+Also , there are always ways you can tweak the css to improve the style.
