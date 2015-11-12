@@ -47,6 +47,17 @@ var gameBoard = {
     // console.log('test move set:',gameBoard.testSpace)
   },
 
+  winMessage: function () {
+    var winner=gameBoard.findColor(gameBoard.lastMove);
+    $('.space').off()
+    console.log('click events removed');
+      if(gameBoard.turn){
+      console.log('you won black!');
+    } else {
+      console.log('you won red!');
+    }
+  },
+
 //find a color of some coordinates selecting with jQuery and usings $.css to get the value of background color and return that value;
   findColor:function(arr){
     var color=$('#row'+arr[1]+' > div.space.col-'+arr[0]).css('backgroundColor');
@@ -89,10 +100,10 @@ var gameBoard = {
   checkForWinner:function(direction){
     // console.log('checking to see if there is a winner');
     // console.log('=====================================')
-      gameBoard.resetSpacesInARow();
+      gameBoard.resetSpacesInARow(); // ln 30
       gameBoard.spacesInARow.first=gameBoard.lastMove;
       // console.log(gameBoard.spacesInARow.first);
-      if(gameBoard.checkMatch(gameBoard.directions.right)){
+      if(gameBoard.checkMatch(gameBoard.directions.right)){//checkmatch ln
         gameBoard.spacesInARow.second=gameBoard.testSpace;
         gameBoard.lastMove=gameBoard.testSpace;
         // console.log(gameBoard.lastMove);
@@ -108,8 +119,8 @@ var gameBoard = {
               var col = gameBoard.spacesInARow[spaces][0];
               var selector = $('#row'+row+'> div.space.col-'+col);
               $(selector).css('background-color','gold');
-
             }
+            gameBoard.winMessage();
           }
         } else {
           // console.log('no winners yet')
@@ -138,6 +149,8 @@ var gameBoard = {
               $(selector).css('background-color','gold');
 
             }
+            gameBoard.winMessage();
+
           }
         } else {
           // console.log('no winners yet')
@@ -165,6 +178,8 @@ var gameBoard = {
               var selector = $('#row'+row+'> div.space.col-'+col)
               $(selector).css('background-color','gold');
             }
+            gameBoard.winMessage();
+
           }
         } else {
           // console.log('no winners yet')
@@ -192,6 +207,8 @@ var gameBoard = {
               var selector = $('#row'+row+'> div.space.col-'+col)
               $(selector).css('background-color','gold');
             }
+            gameBoard.winMessage();
+
           }
         } else {
           // console.log('no winners yet')
@@ -218,6 +235,8 @@ var gameBoard = {
               var selector = $('#row'+row+'> div.space.col-'+col)
               $(selector).css('background-color','gold');
             }
+            gameBoard.winMessage();
+
           }
         } else {
           // console.log('no winners yet')
@@ -245,6 +264,8 @@ var gameBoard = {
               var selector = $('#row'+row+'> div.space.col-'+col)
               $(selector).css('background-color','gold');
             }
+            gameBoard.winMessage();
+
           }
         } else {
           // console.log('no winners yet')
@@ -273,6 +294,8 @@ var gameBoard = {
               var selector = $('#row'+row+'> div.space.col-'+col)
               $(selector).css('background-color','gold');
             }
+            gameBoard.winMessage();
+
           }
         } else {
           // console.log('no winners yet')
@@ -309,92 +332,92 @@ var gameBoard = {
 
 
 //Set event listener to every column if its blacks turn add a black piece , else add a red piece
-      $('.col-0').click(function(){
+      $('.col-0').on('click',function(){
         if(turn){
           player1.makeAMove('0');
-          turn=!turn;
+          gameBoard.turn=!gameBoard.turn;
           $('#title').empty().append("Red's Turn");
         } else {
           player2.makeAMove('0');
-          turn=!turn;
+          gameBoard.turn=!gameBoard.turn;
           $('#title').empty().append("Black's Turn");
 
         }
       });
-      $('.col-1').click(function(){
-        if(turn){
+      $('.col-1').on('click',function(){
+        if(gameBoard.turn){
           player1.makeAMove('1');
-          turn=!turn;
-          $('#title').empty().append("Red's Turn");
+          gameBoard.turn=!gameBoard.turn;
+          $('#title').empty().append("Red's turn");
 
         } else {
           player2.makeAMove('1');
-          turn=!turn;
-          $('#title').empty().append("Black's Turn");
+          gameBoard.turn=!gameBoard.turn;
+          $('#title').empty().append("Black's turn");
 
         }
       });
-      $('.col-2').click(function(){
-        if(turn){
+      $('.col-2').on('click',function(){
+        if(gameBoard.turn){
           player1.makeAMove('2');
-          turn=!turn;
-          $('#title').empty().append("Red's Turn");
+          gameBoard.turn=!gameBoard.turn;
+          $('#title').empty().append("Red's turn");
 
         } else {
           player2.makeAMove('2');
-          turn=!turn;
-          $('#title').empty().append("Black's Turn");
+          gameBoard.turn=!gameBoard.turn;
+          $('#title').empty().append("Black's turn");
 
         }
       });
-      $('.col-3').click(function(){
-        if(turn){
+      $('.col-3').on('click',function(){
+        if(gameBoard.turn){
           player1.makeAMove('3');
-          turn=!turn;
-          $('#title').empty().append("Red's Turn");
+          gameBoard.turn=!gameBoard.turn;
+          $('#title').empty().append("Red's turn");
 
         } else {
           player2.makeAMove('3');
-          turn=!turn;
-          $('#title').empty().append("Black's Turn");
+          gameBoard.turn=!gameBoard.turn;
+          $('#title').empty().append("Black's turn");
 
         }
       });
-      $('.col-4').click(function(){
-        if(turn){
+      $('.col-4').on('click',function(){
+        if(gameBoard.turn){
           player1.makeAMove('4');
-          turn=!turn;
-          $('#title').empty().append("Red's Turn");
+          gameBoard.turn=!gameBoard.turn;
+          $('#title').empty().append("Red's turn");
 
         } else {
           player2.makeAMove('4');
-          turn=!turn;
-          $('#title').empty().append("Black's Turn");
+          gameBoard.turn=!gameBoard.turn;
+          $('#title').empty().append("Black's turn");
 
         }
       });
-      $('.col-5').click(function(){
-        if(turn){
+      $('.col-5').on('click',function(){
+        if(gameBoard.turn){
           player1.makeAMove('5');
-          turn=!turn;
-          $('#title').empty().append("Red's Turn");
+          gameBoard.turn=!gameBoard.turn;
+          $('#title').empty().append("Red's turn");
 
         } else {
           player2.makeAMove('5');
-          turn=!turn;
-          $('#title').empty().append("Black's Turn");
+          gameBoard.turn=!gameBoard.turn;
+          $('#title').empty().append("Black's turn");
 
         }
       });
-      $('.col-6').click(function(){
-        if(turn){
+      $('.col-6').on('click',function(){
+        if(gameBoard.turn){
           player1.makeAMove('6');
-          turn=!turn;
+          gameBoard.turn=!gameBoard.turn;
           $('#title').empty().append("Red's Turn");
 
         } else {
           player2.makeAMove('6');
-          turn=!turn;
+          gameBoard.turn=!gameBoard.turn;
           $('#title').empty().append("Black's Turn");
 
         }
