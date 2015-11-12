@@ -86,10 +86,12 @@ var gameBoard = {
           if(gameBoard.checkMatch(gameBoard.directions.right)){
             gameBoard.spacesInARow.fourth=gameBoard.testSpace;
             console.log('winner winner winner!!!!');
+
             for(var spaces in gameBoard.spacesInARow){
               var row = gameBoard.spacesInARow[spaces][1];
               var col = gameBoard.spacesInARow[spaces][0];
-              $('#row'+row+'> div.space.col-'+col).css('background-color','gold');
+              var selector = $('#row'+row+'> div.space.col-'+col);
+              $(selector).css('background-color','gold');
 
             }
           }
@@ -116,7 +118,8 @@ var gameBoard = {
             for(var spaces in gameBoard.spacesInARow){
               var row = gameBoard.spacesInARow[spaces][1];
               var col = gameBoard.spacesInARow[spaces][0];
-              $('#row'+row+'> div.space.col-'+col).css('background-color','gold');
+              var selector = $('#row'+row+'> div.space.col-'+col)
+              $(selector).css('background-color','gold');
 
             }
           }
@@ -143,8 +146,8 @@ var gameBoard = {
             for(var spaces in gameBoard.spacesInARow){
               var row = gameBoard.spacesInARow[spaces][1];
               var col = gameBoard.spacesInARow[spaces][0];
-              $('#row'+row+'> div.space.col-'+col).css('background-color','gold');
-
+              var selector = $('#row'+row+'> div.space.col-'+col)
+              $(selector).css('background-color','gold');
             }
           }
         } else {
@@ -170,8 +173,8 @@ var gameBoard = {
             for(var spaces in gameBoard.spacesInARow){
               var row = gameBoard.spacesInARow[spaces][1];
               var col = gameBoard.spacesInARow[spaces][0];
-              $('#row'+row+'> div.space.col-'+col).css('background-color','gold');
-
+              var selector = $('#row'+row+'> div.space.col-'+col)
+              $(selector).css('background-color','gold');
             }
           }
         } else {
@@ -196,8 +199,8 @@ var gameBoard = {
             for(var spaces in gameBoard.spacesInARow){
               var row = gameBoard.spacesInARow[spaces][1];
               var col = gameBoard.spacesInARow[spaces][0];
-              $('#row'+row+'> div.space.col-'+col).css('background-color','gold');
-
+              var selector = $('#row'+row+'> div.space.col-'+col)
+              $(selector).css('background-color','gold');
             }
           }
         } else {
@@ -223,8 +226,8 @@ var gameBoard = {
             for(var spaces in gameBoard.spacesInARow){
               var row = gameBoard.spacesInARow[spaces][1];
               var col = gameBoard.spacesInARow[spaces][0];
-              $('#row'+row+'> div.space.col-'+col).css('background-color','gold');
-
+              var selector = $('#row'+row+'> div.space.col-'+col)
+              $(selector).css('background-color','gold');
             }
           }
         } else {
@@ -250,8 +253,8 @@ var gameBoard = {
             for(var spaces in gameBoard.spacesInARow){
               var row = gameBoard.spacesInARow[spaces][1];
               var col = gameBoard.spacesInARow[spaces][0];
-              $('#row'+row+'> div.space.col-'+col).css('background-color','gold');
-
+              var selector = $('#row'+row+'> div.space.col-'+col)
+              $(selector).css('background-color','gold');
             }
           }
         } else {
@@ -281,7 +284,14 @@ var gameBoard = {
   },
 
   playConnectFour:function(){
-    var turn=true;
+    var turn = gameBoard.turn
+    turn=true;
+    if(turn==true){
+      $('#title').empty().append('Black\'s Turn!');
+    }
+    if(turn==false){
+      $('#title').empty().append('Red\'s Turn!');
+    }
     gameBoard.moves=0;
     gameBoard.inARowCount=1;
 
