@@ -5,17 +5,22 @@ body {
 }
 
 #board {
-  width:100%;
+  width:828px;
+  margin-right:auto;
+  margin-left:auto;
   background-color:rgb(192, 201, 84);
-  display:block;
   border:solid black 1px;
+
+
 
 
 }
 
 #wrapper {
-  width:98%;
-  margin:0 auto;
+  width:100%;
+  background-color:slategray;
+
+
 }
 
 #title {
