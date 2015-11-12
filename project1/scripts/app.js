@@ -56,14 +56,14 @@ var gameBoard = {
       $('#title').html('You won Black!!!!!');
         setTimeout(function(){
           location.reload();
-        },3000)
+        },2000)
     } else {
       console.log('you won red!');
       // alert('you won red!');
       $('#title').html('You won Red!!!');
       setTimeout(function(){
         location.reload();
-      },3000)
+      },2000)
     }
   },
 
@@ -127,7 +127,7 @@ var gameBoard = {
               var row = gameBoard.spacesInARow[spaces][1];
               var col = gameBoard.spacesInARow[spaces][0];
               var selector = $('#row'+row+'> div.space.col-'+col);
-              $(selector).css('background-color','rgb(162, 145, 57)');
+              $(selector).css('background-color','rgb(191, 112, 47)');
             }
             gameBoard.winMessage();
           }
@@ -155,7 +155,7 @@ var gameBoard = {
               var row = gameBoard.spacesInARow[spaces][1];
               var col = gameBoard.spacesInARow[spaces][0];
               var selector = $('#row'+row+'> div.space.col-'+col)
-              $(selector).css('background-color','rgb(162, 145, 57)');
+              $(selector).css('background-color','rgb(191, 112, 47)');
 
             }
             gameBoard.winMessage();
@@ -185,7 +185,7 @@ var gameBoard = {
               var row = gameBoard.spacesInARow[spaces][1];
               var col = gameBoard.spacesInARow[spaces][0];
               var selector = $('#row'+row+'> div.space.col-'+col)
-              $(selector).css('background-color','rgb(162, 145, 57)');
+              $(selector).css('background-color','rgb(191, 112, 47)');
             }
             gameBoard.winMessage();
 
@@ -214,7 +214,7 @@ var gameBoard = {
               var row = gameBoard.spacesInARow[spaces][1];
               var col = gameBoard.spacesInARow[spaces][0];
               var selector = $('#row'+row+'> div.space.col-'+col)
-              $(selector).css('background-color','rgb(162, 145, 57)');
+              $(selector).css('background-color','rgb(191, 112, 47)');
             }
             gameBoard.winMessage();
 
@@ -242,7 +242,7 @@ var gameBoard = {
               var row = gameBoard.spacesInARow[spaces][1];
               var col = gameBoard.spacesInARow[spaces][0];
               var selector = $('#row'+row+'> div.space.col-'+col)
-              $(selector).css('background-color','rgb(162, 145, 57)');
+              $(selector).css('background-color','rgb(191, 112, 47)');
             }
             gameBoard.winMessage();
 
@@ -271,7 +271,7 @@ var gameBoard = {
               var row = gameBoard.spacesInARow[spaces][1];
               var col = gameBoard.spacesInARow[spaces][0];
               var selector = $('#row'+row+'> div.space.col-'+col)
-              $(selector).css('background-color','rgb(162, 145, 57)');
+              $(selector).css('background-color','rgb(191, 112, 47)');
             }
             gameBoard.winMessage();
 
@@ -301,7 +301,7 @@ var gameBoard = {
               var row = gameBoard.spacesInARow[spaces][1];
               var col = gameBoard.spacesInARow[spaces][0];
               var selector = $('#row'+row+'> div.space.col-'+col)
-              $(selector).css('background-color','rgb(162, 145, 57)');
+              $(selector).css('background-color','rgb(191, 112, 47)');
             }
             gameBoard.winMessage();
 
