@@ -12,6 +12,21 @@ var gameBoard = {
     diagDownRight:[1,-1],
     diagDownLeft:[-1,-1]
   },
+
+  spacesInARow:{
+    'first':[],
+    'second':[],
+    'third':[],
+    'fourth':[],
+  },
+
+  resetSpacesInARow:function(){
+    gameBoard.spacesInARow.first=[];
+    gameBoard.spacesInARow.second=[];
+    gameBoard.spacesInARow.third=[];
+    gameBoard.spacesInARow.fourth=[];
+  },
+
 //coordinates of last move
   setLastMove:function(arr){
     gameBoard.lastMove=arr;
@@ -43,10 +58,12 @@ var gameBoard = {
 
   },
 
-  setInARowCount:function(){
-    gameBoard.inARowCount++;
-    console.log('nice you have:',gameBoard.inARowCount,'in a row!!!')
-  },
+  // incrementInARowCount:function(){
+  //   gameBoard.inARowCount++;
+  //   console.log('nice you have:',gameBoard.inARowCount,'in a row in the!!!')
+  // },
+
+
 
 
 //check to see if winning game state for either player;
@@ -54,10 +71,36 @@ var gameBoard = {
     console.log('checking to see if there is a winner');
     console.log('=====================================')
 
-    console.log('checking to the right first');
-    gameBoard.checkMatch(gameBoard.directions.right);
+    gameBoard.resetSpacesInARow();
+    gameBoard.spacesInARow.first=gameBoard.lastMove;
+    console.log(gameBoard.spacesInARow.first);
+    if(gameBoard.checkMatch(gameBoard.directions.right)){
+      gameBoard.spacesInARow.second=gameBoard.testSpace;
+      gameBoard.lastMove=gameBoard.testSpace;
+      console.log(gameBoard.lastMove);
+      if(gameBoard.checkMatch(gameBoard.directions.right)){
+        gameBoard.spacesInARow.third=gameBoard.testSpace;
+        gameBoard.lastMove=gameBoard.testSpace;
+        if(gameBoard.checkMatch(gameBoard.directions.right)){
+          gameBoard.spacesInARow.fourth=gameBoard.testSpace;
+          console.log('winner winner winner!!!!');
+          for(var spaces in gameBoard.spacesInARow){
+            var row = gameBoard.spacesInARow[spaces][1];
+            var col = gameBoard.spacesInARow[spaces][0];
+            $('#row'+row+'> div.space.col-'+col).css('background-color','gold');
 
-    },//end of checkForWinner method
+          }
+        }
+      } else {
+        console.log('no winners yet')
+      }
+    } else {
+      console.log('nope no winners yet');
+    }
+
+
+
+  },//end of checkForWinner method
 
 //test space diff is an arr length of two in which i can transform to last move to the testmove space RETURNS BOOLEAN
   checkMatch:function(direction){
@@ -65,7 +108,7 @@ var gameBoard = {
     gameBoard.findColor(gameBoard.lastMove);
     gameBoard.findColor(gameBoard.testSpace);
     if(gameBoard.compareColor(gameBoard.lastMove,gameBoard.testSpace)){
-      gameBoard.setInARowCount();
+      console.log('direction',direction);
       return true;
     } else {
       return false;
@@ -75,7 +118,7 @@ var gameBoard = {
   playConnectFour:function(){
     var turn=true;
     gameBoard.moves=0;
-    gameBoard.inARowCount=0;
+    gameBoard.inARowCount=1;
 
       $('.col-0').click(function(){
         if(turn){
@@ -143,6 +186,9 @@ var gameBoard = {
     }// end of playConnectFour method
 };//end gameBoard Object
 
+
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 function Player(color,board){
   this.color=color;
   this.lastMoveRow=0;
