@@ -9,6 +9,7 @@ var gameBoard = {
   columns:[ [],[],[],[],[],[],[] ] ,
   //each direction is an array length of 2 that when added to any piece coordinates will transform those coordinates to another space representing a change in that given direction.
   directions:{
+    up: [0,1],
     right:[1,0],
     left:[-1,0],
     down:[0,-1],
@@ -56,14 +57,14 @@ var gameBoard = {
       $('#title').html('You won Black!!!!!');
         setTimeout(function(){
           location.reload();
-        },2000)
+        },3500)
     } else {
       console.log('you won red!');
       // alert('you won red!');
       $('#title').html('You won Red!!!');
       setTimeout(function(){
         location.reload();
-      },2000)
+      },3500)
     }
   },
 
@@ -296,7 +297,34 @@ var gameBoard = {
           if(gameBoard.checkMatch(gameBoard.directions.down)){
             gameBoard.spacesInARow.fourth=gameBoard.testSpace;
             // console.log('winner winner winner!!!!');
-//
+            for(var spaces in gameBoard.spacesInARow){
+              var row = gameBoard.spacesInARow[spaces][1];
+              var col = gameBoard.spacesInARow[spaces][0];
+              var selector = $('#row'+row+'> div.space.col-'+col)
+              $(selector).css('background-color','rgb(191, 112, 47)');
+            }
+            gameBoard.winMessage();
+
+          }
+        } else {
+          // console.log('no winners yet')
+        }
+      } else {
+        // console.log('nope no winners yet');
+      }
+      gameBoard.resetSpacesInARow();
+      gameBoard.spacesInARow.first=gameBoard.lastMove;
+      // console.log(gameBoard.spacesInARow.first);
+      if(gameBoard.checkMatch(gameBoard.directions.up)){
+        gameBoard.spacesInARow.second=gameBoard.testSpace;
+        gameBoard.lastMove=gameBoard.testSpace;
+        // console.log(gameBoard.lastMove);
+        if(gameBoard.checkMatch(gameBoard.directions.up)){
+          gameBoard.spacesInARow.third=gameBoard.testSpace;
+          gameBoard.lastMove=gameBoard.testSpace;
+          if(gameBoard.checkMatch(gameBoard.directions.up)){
+            gameBoard.spacesInARow.fourth=gameBoard.testSpace;
+            // console.log('winner winner winner!!!!');
             for(var spaces in gameBoard.spacesInARow){
               var row = gameBoard.spacesInARow[spaces][1];
               var col = gameBoard.spacesInARow[spaces][0];
